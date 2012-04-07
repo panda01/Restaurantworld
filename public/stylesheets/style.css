@@ -1,8 +1,17 @@
-body {
+body 
+{
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-}
+input			{ display: block; }
+
+.fleft		{ float: left; }
+.fright		{ float: right; }
+.clr		{ clear: both; }
+.b-center	{ margin-left: auto; margin-right: auto; }
+.d-none		{ display: none; }
+
+a 			{ color: #00B7FF; }
+
+#page		{ width: 1000px; padding: 0 10px; }

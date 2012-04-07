@@ -8,3 +8,6 @@ var mong = require('mongoose');
 
 mong.connect('mongodb://localhost/restaurants');
 
+function registerUser()
+{
+}

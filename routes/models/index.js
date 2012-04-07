@@ -76,22 +76,22 @@ var Menu = exports.menu = new Schema({
 	description: Desc,
 	groups:[Group]
 });
+var Location = new Schema({
+	street: String,
+	city: String,
+	state: String,
+	longitude: Number,
+	latitude: Number,
+	phone: { type: Number, 
+			max: 9999999999}
+});
 /*
 *	Restaurant Info 
 */
 var Restaurant = new Schema({
 	name: String,
 	description: Desc,
-	location: {
-		street: String,
-		city: String,
-		state: String,
-		longitude: Number,
-		latitude: Number,
-		phone: { type: Number, 
-			max: 9999999999}, 
-		url: String
-	},
+	locations: [Location],
 	environment: {
 		cuisine: {primary: String,
 			secondary: String},
@@ -117,6 +117,7 @@ var userSchm = new Schema({
 		index: {unique: true, 
 			parse: true}
 	},
+	address: [Location],
 	alive: Boolean,
 	password: { type: String, 
 		required: true, 
@@ -138,4 +139,4 @@ userSchm.statics.register = function register(eml, pwd, cb){
 	});
 }
 
-var User = mongoose.model('User', userSchm);
+var User = exports.User = mongoose.model('User', userSchm);

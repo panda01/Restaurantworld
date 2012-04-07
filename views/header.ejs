@@ -1,0 +1,17 @@
+<header>
+	<h1 class="fleft">Restaurant World(beta)</h1>
+	<hgroup class="fright">
+		<% if( user ){ %>
+			<h2>
+				Welcome <%= user.name %>
+			</h2>
+		<% } else { %>
+			<form id="login">
+				<input type="text" value="Email Address" name="email"/>
+				<input type="password" value="password" name="pass" />
+				<input type="submit" value="login" />
+			</form>
+		<% } %>
+	</hgroup>
+	<div class="clr"></div>
+</header>
