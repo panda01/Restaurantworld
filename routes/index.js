@@ -13,3 +13,7 @@ exports.register = function(req, res){
 	var eml = req.body.email
 	db.registerUser( req.body );
 };
+
+exports.login = function(req, res){
+	
+}

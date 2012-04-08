@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -6,17 +5,13 @@
 var express = require('express')
   , routes = require('./routes');
 
-var app = module.exports = express.createServer();
+var app = module.exports = express.createHTTPSServer();
 
 // Configuration
 
 app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'ejs');
-  /*app.set('view options', {
-	open: '{{',
-	close: '}}'
-	});*/ //actually is pretty confusing for complex markup
   app.use(express.bodyParser());
   app.use(express.cookieParser());
   app.use(express.session({secret: 'gPanda Cat'}));
@@ -36,7 +31,9 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
-app.get('/register', routes.register);
+
+app.post('/register', routes.register);
+app.post('/login', routes.login);
 
 app.listen(80);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

@@ -131,11 +131,17 @@ userSchm.statics.login = function login(eml, pwd, cb){
 		.where('password', pwd)
 		.run(cb);
 }
-userSchm.statics.register = function register(eml, pwd, cb){
-	this.count( {email: eml}, function(err, count)
+userSchm.statics.countEml = function userExists(eml, cb){
+	this.count({email: eml}, cb)
+}
+userSchm.statics.register = function register(obj, cb){
+	countEml( obj.eml, function(count, err)
 	{
-		console.log('Register: ' + err );
+		if( err )
+			throw err;
 		console.log( count );
+		if( count > 0 )
+			
 	});
 }
 
